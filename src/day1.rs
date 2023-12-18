@@ -54,16 +54,6 @@ pub fn substitute_str_num(line: &str) -> String {
     }
     ).to_string();
     return result2;
-    // return line
-    //     .replace("one", "1")
-    //     .replace("two", "2")
-    //     .replace("three", "3")
-    //     .replace("four", "4")
-    //     .replace("five", "5")
-    //     .replace("six", "6")
-    //     .replace("seven", "7")
-    //     .replace("eight", "8")
-    //     .replace("nine", "9");
 }
 
 #[cfg(test)]
@@ -72,36 +62,34 @@ mod tests_star1 {
 
     #[test]
     fn test_1() {
-        let data = test_data()[0];
-        let result = solve_line(data);
-        assert_eq!(result, lines_result()[0]);
+        test_num(0);
     }
 
     #[test]
     fn test_2() {
-        let data = test_data()[1];
-        let result = solve_line(data);
-        assert_eq!(result, lines_result()[1]);
+        test_num(1);
     }
 
     #[test]
     fn test_3() {
-        let data = test_data()[2];
-        let result = solve_line(data);
-        assert_eq!(result, lines_result()[2]);
+        test_num(2);
     }
 
     #[test]
     fn test_4() {
-        let data = test_data()[3];
-        let result = solve_line(data);
-        assert_eq!(result, lines_result()[3]);
+        test_num(3);
     }
 
     #[test]
     fn test_all() {
         let result = solve(test_data());
         assert_eq!(result, all_result());
+    }
+
+    fn test_num(pos: usize){
+        let data = test_data()[pos];
+        let result = solve_line(data);
+        assert_eq!(result, lines_result()[pos]);
     }
 
     pub fn test_data<'a>() -> &'a[&'a str] {
@@ -126,57 +114,49 @@ mod tests_star2 {
 
     #[test]
     fn test_1() {
-        let data = test_data()[0];
-        let result = solve_line(data);
-        assert_eq!(result, lines_result()[0]);
+        test_num(0);
     }
 
     #[test]
     fn test_2() {
-        let data = test_data()[1];
-        let result = solve_line(data);
-        assert_eq!(result, lines_result()[1]);
+        test_num(1);
     }
 
     #[test]
     fn test_3() {
-        let data = test_data()[2];
-        let result = solve_line(data);
-        assert_eq!(result, lines_result()[2]);
+        test_num(2);
     }
 
     #[test]
     fn test_4() {
-        let data = test_data()[3];
-        let result = solve_line(data);
-        assert_eq!(result, lines_result()[3]);
+        test_num(3);
     }
 
     #[test]
     fn test_5() {
-        let data = test_data()[4];
-        let result = solve_line(data);
-        assert_eq!(result, lines_result()[4]);
+        test_num(4);
     }
 
     #[test]
     fn test_6() {
-        let data = test_data()[5];
-        let result = solve_line(data);
-        assert_eq!(result, lines_result()[5]);
+        test_num(5);
     }
 
     #[test]
     fn test_7() {
-        let data = test_data()[6];
-        let result = solve_line(data);
-        assert_eq!(result, lines_result()[6]);
+        test_num(6);
     }
 
     #[test]
     fn test_all() {
         let result = solve(test_data());
         assert_eq!(result, all_result());
+    }
+
+    fn test_num(pos: usize){
+        let data = test_data()[pos];
+        let result = solve_line(data);
+        assert_eq!(result, lines_result()[pos]);
     }
 
     #[test]
@@ -187,18 +167,29 @@ mod tests_star2 {
 
     #[test]
     fn substitute_str_as_num() {
-        let subs = ["one",
-        "two",
-        "three",
-        "four",
-        "five",
-        "six",
-        "seven",
-        "eight",
-        "nine"];
-        for (pos, sub) in subs.iter().enumerate() {
+        let nums = [
+            "one",
+            "two",
+            "three",
+            "four",
+            "five",
+            "six",
+            "seven",
+            "eight",
+            "nine"];
+        let subs = [
+            "on1e",
+            "tw2o",
+            "th3ree",
+            "fo4ur",
+            "fi5ve",
+            "si6x",
+            "sev7en",
+            "ei8ght",
+            "ni9ne"];
+        for (pos, sub) in nums.iter().enumerate() {
             let result = substitute_str_num(format!("asdf{}qwer", sub).as_str());
-            assert_eq!(result, format!("asdf{}qwer", pos + 1));
+            assert_eq!(result, format!("asdf{}qwer", subs[pos]));
         }
     }
 
